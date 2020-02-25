@@ -1,0 +1,39 @@
+html,body{
+    font-family: 'Open Sans';
+    color: #2D2A26;
+    height: 100%;
+}
+.header-row{
+    margin-top: 50px;
+}
+#header-text{
+    margin: auto;
+    color: #CE0E2D;
+    font-style: italic;
+    font-weight: bolder;
+}
+#contact,#fleet{
+    margin-top: 90px;
+    color: #CE0E2D;
+    float: left;
+}
+#btnCheckFleet{
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 60px;
+}
+.contactForm{
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+    padding: 20px;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+#submit{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: #CE0E2D;
+    font-weight: bold;
+}
