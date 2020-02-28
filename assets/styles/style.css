@@ -4,7 +4,14 @@ html,body{
     height: 100%;
 }
 .header-row{
-    margin-top: 50px;
+    margin-top: 90px;
+}
+.fleetrow{
+    margin-top: 80px;
+}
+#plus{
+    margin-bottom: 5px;
+    float: right;
 }
 #header-text{
     margin: auto;
@@ -12,8 +19,12 @@ html,body{
     font-style: italic;
     font-weight: bolder;
 }
-#contact,#fleet{
+#contact{
     margin-top: 90px;
+    color: #CE0E2D;
+    float: left;
+}
+#fleet{
     color: #CE0E2D;
     float: left;
 }
