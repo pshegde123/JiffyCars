@@ -4,17 +4,17 @@ html,body{
     height: 100%;
 }
 .header-row{
-    margin-top: 90px;
+    margin-top: 40px;
 }
 .fleetrow{
-    margin-top: 80px;
+    margin-top: 90px;
 }
 #plus{
     margin-bottom: 5px;
     float: right;
 }
 #header-text{
-    margin: auto;
+    float: left;
     color: #CE0E2D;
     font-style: italic;
     font-weight: bolder;
