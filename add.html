@@ -27,7 +27,7 @@
                     <a class="nav-link" href="./index.html">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="./fleet.html">Rent</a>
+                    <a class="nav-link" href="./fleet.html">Fleet</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="./contact.html">Contact Us</a>
@@ -42,23 +42,53 @@
         <div class="row">
             <form class="addVehicleForm" action="" method="POST" enctype="text/plain">
                 <div class="form-row">
-                    <div class="col-md-8 mb-3">
+                    <div class="col mb-3">
+                        <label for="addCarMaker">Car Maker</label>
+                        <input type="text" class="form-control" id="addCarMaker" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col mb-3">
                         <label for="addModel">Car Model</label>
                         <input type="text" class="form-control" id="addModel" required>
                     </div>
                 </div>
                 <div class="form-row">
-                    <div class="col-md-8 mb-3">
-                        <label for="addMakeyear">Year</label>
+                    <div class="col mb-3">
+                        <label for="addMakeyear">Manufacturing Year</label>
                         <input type="text" class="form-control" id="addMakeyear" required>
                     </div>
                 </div>
                 <div class="form-row">
-                    <div class="col-md-8 mb-3">
+                    <div class="col mb-3">
+                        <label for="addSeats">Number of seats</label>
+                        <input type="number" class="form-control" id="addSeats" required>
+                    </div>
+                </div>                
+                <div class="form-row">
+                    <div class="col mb-3">
+                        <label for="addDailyCharges">Price per day($$)</label>
+                        <input type="number" class="form-control" id="addDailyCharges" required>
+                    </div>
+                </div>                
+                <div class="form-row">
+                    <div class="col mb-3">
                         <label for="addImage">Image</label>
-                        <input type="text" class="form-control" id="addImage" reaquired>
+                        <input type="text" class="form-control" id="addImage" required>
                     </div>
                 </div>
+                <div class="form-row">
+                    <div class="col mb-3">
+                        <label for="addFromDate">Rented Date From</label>
+                        <input type="date" class="form-control" id="addFromDate" required>
+                    </div>
+                </div>                
+                <div class="form-row">
+                    <div class="col mb-3">
+                        <label for="addToDate">Rented Date To</label>
+                        <input type="date" class="form-control" id="addToDate" required>
+                    </div>
+                </div>                
                 <button class="btn btn-warning btn-block" id="addVanButton" type="submit">Submit</button>
             </form>
         </div>

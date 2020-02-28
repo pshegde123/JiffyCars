@@ -27,7 +27,7 @@
                     <a class="nav-link" href="./index.html">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="./fleet.html">Rent</a>
+                    <a class="nav-link" href="./fleet.html">Fleet</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="./contact.html">Contact Us</a>
@@ -42,25 +42,55 @@
         <div class="row">
             <form class="addVehicleForm" action="" method="POST" enctype="text/plain">
                 <div class="form-row">
-                    <div class="col-md-8 mb-3">
+                    <div class="col mb-3">
+                        <label for="editCarMaker">Car Maker</label>
+                        <input type="text" class="form-control" id="editCarMaker" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col mb-3">
                         <label for="editModel">Car Model</label>
                         <input type="text" class="form-control" id="editModel" required>
                     </div>
                 </div>
                 <div class="form-row">
-                    <div class="col-md-8 mb-3">
+                    <div class="col mb-3">
                         <label for="editMakeYear">Year</label>
                         <input type="text" class="form-control" id="editMakeYear" required>
                     </div>
                 </div>
                 <div class="form-row">
-                    <div class="col-md-8 mb-3">
+                    <div class="col mb-3">
+                        <label for="editSeats">Seats</label>
+                        <input type="number" class="form-control" id="editSeats" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col mb-3">
+                        <label for="editPricePerDay">Price Per Day($)</label>
+                        <input type="number" class="form-control" id="editPricePerDay" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col mb-3">
+                        <label for="editRentedDateFrom">Rented Date From</label>
+                        <input type="date" class="form-control" id="editRentedDateFrom" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col mb-3">
+                        <label for="editRentedDateTo">Rented Date To</label>
+                        <input type="date" class="form-control" id="editRentedDateTo" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col mb-3">
                         <label for="editImage">Image</label>
                         <input type="text" class="form-control" id="editImage" required>
                     </div>
                 </div>
                 <div class="form-row">
-                    <div class="col-md-8 mb-3">
+                    <div class="col mb-3">
                         <select id="select1"> 
                             <option value="available">Available</option> 
                             <option value="rented">Rented</option> 

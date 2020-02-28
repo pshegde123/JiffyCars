@@ -19,7 +19,7 @@ html,body{
     font-style: italic;
     font-weight: bolder;
 }
-#contact{
+#contact,#fleet{
     margin-top: 90px;
     color: #CE0E2D;
     float: left;

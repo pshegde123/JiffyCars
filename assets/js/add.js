@@ -22,13 +22,45 @@ $(document).ready(function () {
         const addModel = $("#addModel").val();
         const addMakeYear = $("#addMakeyear").val();
         const addImage = $("#addImage").val();
+
+        const addCarMaker = $("#addCarMaker").val();
+        const addSeats= $("#addSeats").val();
+        const addDailyCharges = $("#addDailyCharges").val();
+        const rentedFromDate = $("#addFromDate").val();
+        const rentedToDate = $("#addToDate").val();
+
         console.log(addModel,addMakeYear,addImage);
-        database.ref('/vans').push({
-            carModel: addModel,
-            makeYear: addMakeYear,
-            image: addImage,
-            status: "available"
-        });
-        window.location.href="./van.html";
+        console.log(addCarMaker,addSeats,addDailyCharges,rentedFromDate,rentedToDate);
+
+        var vehicleCatagory = sessionStorage.vehicleCatagory;
+        console.log("vehicleCatagory=",vehicleCatagory);
+        if(vehicleCatagory === "van"){
+            database.ref('/vans').push({
+                carMaker:addCarMaker,
+                carModel:addModel,
+                makeYear:addMakeYear,
+                seats:addSeats,
+                dailyCharges:addDailyCharges,
+                fromDate:rentedFromDate,
+                toDate:rentedToDate,
+                image:addImage,
+                status: "available"
+            });
+            window.location.href="./van.html";    
+        }
+        else if(vehicleCatagory === "suv"){
+            database.ref('/suvs').push({
+                carMaker:addCarMaker,
+                carModel:addModel,
+                makeYear:addMakeYear,
+                seats:addSeats,
+                dailyCharges:addDailyCharges,
+                fromDate:rentedFromDate,
+                toDate:rentedToDate,
+                image:addImage,
+                status: "available"
+            });
+            window.location.href="./suv.html";    
+        }
     });
 });
