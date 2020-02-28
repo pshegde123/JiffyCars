@@ -65,10 +65,14 @@ $(document).ready(function () {
         else {
             button = $("<p class='card-text'>Availability: <button type='button' class='btn btn-danger'>Rented</button></p>");
         }
-        var editButton = $("<p class='card-text'><button type='button' class='btn btn-primary' style='width:200px;'>Edit</button></p>");
+        var editButton = $("<button type='button' class='btn btn-primary edit-button mb-1' style='width:200px;'>Edit</button>");
         var deleteButton = $("<button type='button' class='btn btn-primary close-button' style='width:200px;'>Delete</button>");
+
         deleteButton.attr("id", "card"+count);
         deleteButton.attr("data-key", childSnapshot.key);
+
+        editButton.attr("id", "card"+count);
+        editButton.attr("data-key", childSnapshot.key);
        
         card.append(image);
         card.append(body);
@@ -89,6 +93,7 @@ $(document).ready(function () {
         window.location.href = "./add.html";
     });
 
+    //delete button event handler
     function removeCard(){
         var cardToRemove = $(this).attr('id');
         //console.log("delete card id=", cardToRemove);
@@ -101,8 +106,18 @@ $(document).ready(function () {
         //console.log(childNode);
         childNode.remove();   
     }
-    
+
+    //edit button event handler
+    function editData(){
+        sessionStorage.item_id=$(this).attr('data-key');
+        //console.log(sessionStorage.item_id);
+        window.location.href="./edit.html";
+    }
+
     //loadSeedData();
     //remove this card from dom and database.
+    //delete button event handler
     $(document).on("click", ".close-button", removeCard);
+    //edit button handler
+    $(document).on("click",".edit-button",editData);
 });
