@@ -1,5 +1,5 @@
 var item_key = "";
-var database="";
+var database = "";
 $(document).ready(function () {
     var firebaseConfig = {
         apiKey: "AIzaSyBEiUYDDMCjCdpXfg6HXx4dXGBJyN6Rrww",
@@ -14,8 +14,8 @@ $(document).ready(function () {
     firebase.initializeApp(firebaseConfig);
     database = firebase.database();
 
-    console.log("sessionStorage.vehicleCatagory=",sessionStorage.vehicleCatagory);
-    if (sessionStorage.vehicleCatagory === "van") {    
+    console.log("sessionStorage.vehicleCatagory=", sessionStorage.vehicleCatagory);
+    if (sessionStorage.vehicleCatagory === "van") {
         let edit_id = database.ref('/vans').child(sessionStorage.item_id);
         //console.log("sessionstorage = ", edit_id.key);
         database.ref('/vans').orderByKey().equalTo(edit_id.key).on("value", function (snapshot) {
@@ -113,49 +113,62 @@ $("#editVanDetail").on('click', function (event) {
     const status = document.querySelector('#select1').value;
     console.log("EDIT:", model, year, image, status, maker, seats, pricePerDay, rentedDateFrom, rentedDateTo);
     //console.log("ref=",'/vans/'+item_key);
-    if (sessionStorage.vehicleCatagory === "van") {
-        console.log("here 1");
-        database.ref('/vans/' + item_key).update({
-            carMaker: maker,
-            carModel: model,
-            makeYear: year,
-            seats: seats,
-            dailyCharges: pricePerDay,
-            fromDate: rentedDateFrom,
-            toDate: rentedDateTo,
-            image: image,
-            status: status
-        });
-        window.location.href = "./van.html";
+
+    //validate edit input fields
+    if (!model ||
+        !maker ||
+        !seats ||
+        !pricePerDay ||
+        !rentedDateTo ||
+        !rentedDateFrom ||
+        !image) {
+        alert("Please fill out all the fields!");
     }
-    else if (sessionStorage.vehicleCatagory === "suv") {
-        console.log("here 2");
-        database.ref('/suvs/' + item_key).update({
-            carMaker: maker,
-            carModel: model,
-            makeYear: year,
-            seats: seats,
-            dailyCharges: pricePerDay,
-            fromDate: rentedDateFrom,
-            toDate: rentedDateTo,
-            image: image,
-            status: status
-        });
-        window.location.href = "./suv.html";
-    }
-    else if (sessionStorage.vehicleCatagory === "sedan") {
-        console.log("here 3");
-        database.ref('/sedan/' + item_key).update({
-            carMaker: maker,
-            carModel: model,
-            makeYear: year,
-            seats: seats,
-            dailyCharges: pricePerDay,
-            fromDate: rentedDateFrom,
-            toDate: rentedDateTo,
-            image: image,
-            status: status
-        });
-        window.location.href = "./sedan.html";
+    else {
+        if (sessionStorage.vehicleCatagory === "van") {
+            console.log("here 1");
+            database.ref('/vans/' + item_key).update({
+                carMaker: maker,
+                carModel: model,
+                makeYear: year,
+                seats: seats,
+                dailyCharges: pricePerDay,
+                fromDate: rentedDateFrom,
+                toDate: rentedDateTo,
+                image: image,
+                status: status
+            });
+            window.location.href = "./van.html";
+        }
+        else if (sessionStorage.vehicleCatagory === "suv") {
+            console.log("here 2");
+            database.ref('/suvs/' + item_key).update({
+                carMaker: maker,
+                carModel: model,
+                makeYear: year,
+                seats: seats,
+                dailyCharges: pricePerDay,
+                fromDate: rentedDateFrom,
+                toDate: rentedDateTo,
+                image: image,
+                status: status
+            });
+            window.location.href = "./suv.html";
+        }
+        else if (sessionStorage.vehicleCatagory === "sedan") {
+            console.log("here 3");
+            database.ref('/sedan/' + item_key).update({
+                carMaker: maker,
+                carModel: model,
+                makeYear: year,
+                seats: seats,
+                dailyCharges: pricePerDay,
+                fromDate: rentedDateFrom,
+                toDate: rentedDateTo,
+                image: image,
+                status: status
+            });
+            window.location.href = "./sedan.html";
+        }
     }
 });
