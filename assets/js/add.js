@@ -18,7 +18,6 @@ $(document).ready(function () {
     /* Add new entry to database.*/
     $("#addVanButton").on('click',function(event){
         event.preventDefault();
-        console.log("Here");
         const addModel = $("#addModel").val();
         const addMakeYear = $("#addMakeyear").val();
         const addImage = $("#addImage").val();
@@ -29,38 +28,64 @@ $(document).ready(function () {
         const rentedFromDate = $("#addFromDate").val();
         const rentedToDate = $("#addToDate").val();
 
-        console.log(addModel,addMakeYear,addImage);
-        console.log(addCarMaker,addSeats,addDailyCharges,rentedFromDate,rentedToDate);
-
-        var vehicleCatagory = sessionStorage.vehicleCatagory;
-        console.log("vehicleCatagory=",vehicleCatagory);
-        if(vehicleCatagory === "van"){
-            database.ref('/vans').push({
-                carMaker:addCarMaker,
-                carModel:addModel,
-                makeYear:addMakeYear,
-                seats:addSeats,
-                dailyCharges:addDailyCharges,
-                fromDate:rentedFromDate,
-                toDate:rentedToDate,
-                image:addImage,
-                status: "available"
-            });
-            window.location.href="./van.html";    
-        }
-        else if(vehicleCatagory === "suv"){
-            database.ref('/suvs').push({
-                carMaker:addCarMaker,
-                carModel:addModel,
-                makeYear:addMakeYear,
-                seats:addSeats,
-                dailyCharges:addDailyCharges,
-                fromDate:rentedFromDate,
-                toDate:rentedToDate,
-                image:addImage,
-                status: "available"
-            });
-            window.location.href="./suv.html";    
-        }
+        //console.log(addModel,addMakeYear,addImage);
+        //console.log(addCarMaker,addSeats,addDailyCharges,rentedFromDate,rentedToDate);
+        //validate all the input fields
+        if(!addModel||
+            !addCarMaker ||
+            !addSeats ||
+            !addDailyCharges ||
+            !rentedToDate ||
+            !rentedFromDate||
+            !addImage)
+            {
+                alert("Please fill out all the fields!");
+            }
+            else{
+                var vehicleCatagory = sessionStorage.vehicleCatagory;
+                //console.log("vehicleCatagory=",vehicleCatagory);
+                if(vehicleCatagory === "van"){
+                    database.ref('/vans').push({
+                        carMaker:addCarMaker,
+                        carModel:addModel,
+                        makeYear:addMakeYear,
+                        seats:addSeats,
+                        dailyCharges:addDailyCharges,
+                        fromDate:rentedFromDate,
+                        toDate:rentedToDate,
+                        image:addImage,
+                        status: "available"
+                    });
+                    window.location.href="./van.html";    
+                }
+                else if(vehicleCatagory === "suv"){
+                    database.ref('/suvs').push({
+                        carMaker:addCarMaker,
+                        carModel:addModel,
+                        makeYear:addMakeYear,
+                        seats:addSeats,
+                        dailyCharges:addDailyCharges,
+                        fromDate:rentedFromDate,
+                        toDate:rentedToDate,
+                        image:addImage,
+                        status: "available"
+                    });
+                    window.location.href="./suv.html";    
+                }
+                else if(vehicleCatagory === "sedan"){
+                    database.ref('/sedan').push({
+                        carMaker:addCarMaker,
+                        carModel:addModel,
+                        makeYear:addMakeYear,
+                        seats:addSeats,
+                        dailyCharges:addDailyCharges,
+                        fromDate:rentedFromDate,
+                        toDate:rentedToDate,
+                        image:addImage,
+                        status: "available"
+                    });
+                    window.location.href="./sedan.html";    
+                }
+            }
     });
 });

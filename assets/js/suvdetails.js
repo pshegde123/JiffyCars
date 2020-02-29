@@ -26,7 +26,7 @@ $(document).ready(function () {
         var card = $("<div class='card col-4 p-0 m-1' id='card"+count+"'>");
         var image = $("<img src=" + childSnapshot.val().image + " class='card-img-top' style='width:100%;height:180px;' alt='card'>");
         var body = $("<div class='card-body bg-dark text-white'>");
-        var title = $("<h2 class='card-title'>" + childSnapshot.val().carModel + "</h5>");
+        var title = $("<h2 class='card-title'>"+childSnapshot.val().carMaker+' '+childSnapshot.val().carModel + "</h5>");
         var carMaker = $("<p class='card-text'>Maker: "+childSnapshot.val().carMaker+"</p>");
         var mfgYear = $("<p class='card-text'>Manufacturing Year: "+childSnapshot.val().makeYear+"</p>");
         var numberOfSeats = $("<p class='card-text'>Number of seats: "+childSnapshot.val().seats+"</p>");
@@ -43,8 +43,8 @@ $(document).ready(function () {
         else {
             button = $("<p class='card-text'>Availability: <button type='button' class='btn btn-danger'>Rented</button></p>");
         }
-        var editButton = $("<button type='button' class='btn btn-primary edit-button mb-1' style='width:200px;'>Edit</button>");
-        var deleteButton = $("<button type='button' class='btn btn-primary close-button' style='width:200px;'>Delete</button>");
+        var editButton = $("<button type='button' class='btn btn-primary edit-button m-1' style='width:40%;'>Edit</button>");
+        var deleteButton = $("<button type='button' class='btn btn-primary close-button m-1' style='width:40%;'>Delete</button>");
 
         deleteButton.attr("id", "card"+count);
         deleteButton.attr("data-key", childSnapshot.key);

@@ -16,54 +16,23 @@ $(document).ready(function () {
     firebase.initializeApp(firebaseConfig);
     var database = firebase.database();
 
-    //load seed(default) data
-    function loadSeedData() {
-        var seedData = [{ carModel: "RAM Promaster Cargo", makeYear: "2017", image: "https://d1zgdcrdir5wgt.cloudfront.net/media/vehicle/images/pr1-lXc_S6S4IzP6o6N-iw.1440x700.jpg", status: "available" },
-        { carModel: "RAM 1500", makeYear: "2019", image: "https://www.greenbrierdodge.com/assets/shared/CustomHTMLFiles/Responsive/MRP/RAM/2019/1500/images/2019-RAM-1500-01.jpg", status: "rented" },
-        { carModel: "GMC Canyon", makeYear: "2019", image: "https://www.gmc.com/content/dam/gmc/na/us/english/index/vehicles/2019/trucks/canyon-mov/01-images/2019-canyon-mov-sle-slt-19PGCN00251-v7.jpg?imwidth=600", status: "available" }];
-        // Your web app's Firebase configuration
-
-        //Remove preloaded data
-        let vanDataRef = database.ref('/vans');
-        //vanDataRef.remove();
-
-        var carModel = "";
-        var makeYear = "";
-        var imageURL = "";
-        var status = "";
-
-        // Load seed data
-        for (let iter = 0; iter < seedData.length; iter++) {
-            //console.log("seeddata=", seedData[iter]);
-            carModel = seedData[iter].carModel;
-            makeYear = seedData[iter].makeYear;
-            imageURL = seedData[iter].image;
-            status = seedData[iter].status;
-            database.ref('/vans').push({
-                carModel: carModel,
-                makeYear: makeYear,
-                image: imageURL,
-                status: status
-            });
-        }
-    }
-
+    
     //Display data on page
-    database.ref('/vans').on("child_added", function (childSnapshot) {
+    database.ref('/sedan').on("child_added", function (childSnapshot) {
         // Log everything that's coming out of snapshot
         console.log(childSnapshot.val());
 
         //create html elements
         var card = $("<div class='card col-4 p-0 m-1' id='card"+count+"'>");
-        var image = $("<img src=" + childSnapshot.val().image + " class='card-img-top' style='width:100%;height:180px;' alt='card'>");
+        var image = $("<img src=" + childSnapshot.val().image + " class='card-img-top' style='width:100%;height:180px;' alt='card' required>");
         var body = $("<div class='card-body bg-dark text-white'>");
-        var title = $("<h2 class='card-title'>"+childSnapshot.val().carMaker+' '+childSnapshot.val().carModel + "</h5>");
-        var carMaker = $("<p class='card-text'>Maker: "+childSnapshot.val().carMaker+"</p>");
-        var mfgYear = $("<p class='card-text'>Manufacturing Year: "+childSnapshot.val().makeYear+"</p>");
-        var numberOfSeats = $("<p class='card-text'>Number of seats: "+childSnapshot.val().seats+"</p>");
-        var pricePerDay = $("<p class='card-text'>Price Per Day($): "+childSnapshot.val().dailyCharges+"</p>");
-        var rentedDateFrom = $("<p class='card-text'>Rented Date From: "+childSnapshot.val().fromDate+"</p>");
-        var rentedDateTo = $("<p class='card-text'>Rented Date To: "+childSnapshot.val().toDate+"</p>");
+        var title = $("<h2 class='card-title' required>"+childSnapshot.val().carMaker+' '+childSnapshot.val().carModel + "</h5>");
+        var carMaker = $("<p class='card-text' required>Maker: "+childSnapshot.val().carMaker+"</p>");
+        var mfgYear = $("<p class='card-text' required>Manufacturing Year: "+childSnapshot.val().makeYear+"</p>");
+        var numberOfSeats = $("<p class='card-text' required>Number of seats: "+childSnapshot.val().seats+"</p>");
+        var pricePerDay = $("<p class='card-text' required>Price Per Day($): "+childSnapshot.val().dailyCharges+"</p>");
+        var rentedDateFrom = $("<p class='card-text' required>Rented Date From: "+childSnapshot.val().fromDate+"</p>");
+        var rentedDateTo = $("<p class='card-text' required>Rented Date To: "+childSnapshot.val().toDate+"</p>");
 
         var status = childSnapshot.val().status;
         var button = "";
@@ -105,7 +74,7 @@ $(document).ready(function () {
 
     $("#plus").on('click', function (event) {
         event.preventDefault();
-        sessionStorage.vehicleCatagory = "van";
+        sessionStorage.vehicleCatagory = "sedan";
         window.location.href = "./add.html";
     });
 
@@ -118,8 +87,8 @@ $(document).ready(function () {
         element.remove();
     
         //delete database record
-        sessionStorage.vehicleCatagory = "van";
-        var childNode = database.ref("/vans").child($(this).attr("data-key"));
+        sessionStorage.vehicleCatagory = "sedan";
+        var childNode = database.ref("/sedan").child($(this).attr("data-key"));
         //console.log(childNode);
         childNode.remove();   
     }
@@ -128,11 +97,11 @@ $(document).ready(function () {
     function editData(){
         sessionStorage.item_id=$(this).attr('data-key');
         //console.log(sessionStorage.item_id);
-        sessionStorage.vehicleCatagory = "van";
+        sessionStorage.vehicleCatagory = "sedan";
         window.location.href="./edit.html";
     }
 
-    //loadSeedData();
+    
     //remove this card from dom and database.
     //delete button event handler
     $(document).on("click", ".close-button", removeCard);

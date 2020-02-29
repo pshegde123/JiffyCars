@@ -10,6 +10,7 @@ html,body{
     margin-top: 90px;
 }
 #plus{
+    margin-top: 20px;
     margin-bottom: 5px;
     float: right;
 }
@@ -20,7 +21,12 @@ html,body{
     font-weight: bolder;
 }
 #contact,#fleet{
-    margin-top: 90px;
+    margin-top: 70px;
+    color: #CE0E2D;
+    float: left;
+}
+#collectionHeader{
+    margin-top: 10px;
     color: #CE0E2D;
     float: left;
 }
