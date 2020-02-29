@@ -41,6 +41,10 @@ $(document).ready(function () {
             {
                 alert("Please fill out all the fields!");
             }
+            else if(Date.parse(rentedToDate) < Date.parse(rentedFromDate))
+            {
+                alert("Rented To Date cannot be less than Rented From Date");
+            }
             else{
                 var vehicleCatagory = sessionStorage.vehicleCatagory;
                 //console.log("vehicleCatagory=",vehicleCatagory);

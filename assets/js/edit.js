@@ -124,6 +124,10 @@ $("#editVanDetail").on('click', function (event) {
         !image) {
         alert("Please fill out all the fields!");
     }
+    else if(Date.parse(rentedDateTo) < Date.parse(rentedDateFrom)) //validate date
+    {
+        alert("Rented To Date cannot be less than Rented From Date");
+    }
     else {
         if (sessionStorage.vehicleCatagory === "van") {
             console.log("here 1");
